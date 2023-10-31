@@ -5,7 +5,7 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | null: false |
+| email              | string | null: false, unique:true |
 | encrypted_password | string | null: false |
 | last_name          | string | null: false |
 | first_name         | string | null: false |
@@ -20,17 +20,17 @@
 
 ## items テーブル
 
-| Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-| item_name     | string  | null: false |
-| description   | text    | null: false |
-| category      | text    | null: false |
-| state         | text    | null: false |
-| postage       | string  | null: false |
-| region        | string  | null: false |
-| shipping_date | string  | null: false |
-| price         | integer | null: false |
-| seller_id     | integer | null: false |
+| Column           | Type       | Options     |
+| ---------------- | ---------- | ----------- |
+| item_name        | string     | null: false |
+| description      | text       | null: false |
+| category_id      | integer    | null: false |
+| state_id         | integer    | null: false |
+| postage_id       | integer    | null: false |
+| region_id        | integer    | null: false |
+| shipping_date_id | integer    | null: false |
+| price            | integer    | null: false |
+| user             | references | null: false,foreign_key: true |
 
 ### Association
 
@@ -39,10 +39,10 @@
 
 ## orders テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| buyer_id   | integer    | null: false                    |
-| item_id    | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -52,14 +52,15 @@
 
 ## shipments テーブル
 
-| Column       | Type   | Options     |
-| ------------ | ------ | ----------- |
-| postalcode   | string | null: false |
-| prefecture   | string | null: false |
-| city         | string | null: false |
-| block        | string | null: false |
-| building     | string |             |
-| phone_number | string | null: false |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| postalcode   | string     | null: false                    |
+| region_id    | integer    | null: false                    |
+| city         | string     | null: false                    |
+| block        | string     | null: false                    |
+| building     | string     |                                |
+| phone_number | string     | null: false                    |
+| order        | references | null: false, foreign_key: true |
 
 ### Association
 

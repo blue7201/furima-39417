@@ -1,6 +1,6 @@
 class OrderShipment
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postalcode, :region_id, :city, :block, :building, :phone_number #, :token
+  attr_accessor :user_id, :item_id, :postalcode, :region_id, :city, :block, :building, :phone_number, :token
 
   with_options presence: true do
     # orderモデルのバリデーション
@@ -13,7 +13,7 @@ class OrderShipment
     validates :block
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
     # トークンのバリデーション
-    #validates :token
+    validates :token
   end
 
   def save

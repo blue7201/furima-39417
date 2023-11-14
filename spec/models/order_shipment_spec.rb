@@ -40,7 +40,7 @@ RSpec.describe OrderShipment, type: :model do
       it 'region_idが"--"だと保存できない' do
         @order_shipment.region_id = 1
         @order_shipment.valid?
-        expect(@order_shipment.errors.full_messages).to include("Region must be other than 1")
+        expect(@order_shipment.errors.full_messages).to include('Region must be other than 1')
       end
 
       it 'cityが空では保存できない' do
@@ -64,43 +64,43 @@ RSpec.describe OrderShipment, type: :model do
       it 'postalcodeはハイフンがないと保存できない' do
         @order_shipment.postalcode = '1234567'
         @order_shipment.valid?
-        expect(@order_shipment.errors.full_messages).to include("Postalcode is invalid")
+        expect(@order_shipment.errors.full_messages).to include('Postalcode is invalid')
       end
 
       it 'postalcodeは半角英数混合では保存できない' do
         @order_shipment.postalcode = '123-abcd'
         @order_shipment.valid?
-        expect(@order_shipment.errors.full_messages).to include("Postalcode is invalid")
+        expect(@order_shipment.errors.full_messages).to include('Postalcode is invalid')
       end
 
       it 'postalcodeは全角では保存できない' do
         @order_shipment.postalcode = '１２３-４５６７'
         @order_shipment.valid?
-        expect(@order_shipment.errors.full_messages).to include("Postalcode is invalid")
+        expect(@order_shipment.errors.full_messages).to include('Postalcode is invalid')
       end
 
       it 'phone_numberは12桁の数字では保存できない' do
         @order_shipment.phone_number = '090123456789'
         @order_shipment.valid?
-        expect(@order_shipment.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_shipment.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'phone_numberは9桁以下の数字では保存できない' do
         @order_shipment.phone_number = '090123456'
         @order_shipment.valid?
-        expect(@order_shipment.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_shipment.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'phone_numberは半角英数混合では保存できない' do
         @order_shipment.phone_number = 'abc123456789'
         @order_shipment.valid?
-        expect(@order_shipment.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_shipment.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'phone_numberは全角では保存できない' do
         @order_shipment.phone_number = '０９０１２３４５６７８'
         @order_shipment.valid?
-        expect(@order_shipment.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_shipment.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'user_idが空だと保存できない' do

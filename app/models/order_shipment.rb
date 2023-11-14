@@ -18,8 +18,9 @@ class OrderShipment
 
   def save
     # 購入情報を保存し、変数orderに代入する
-    order = Order.create(user_id: user_id, item_id: item_id)
-     # 住所を保存する
-    Shipment.create(postalcode: postalcode, region_id: region_id, city: city, block: block, building: building, phone_number: phone_number, order_id: order.id)
+    order = Order.create(user_id:, item_id:)
+    # 住所を保存する
+    Shipment.create(postalcode:, region_id:, city:, block:, building:,
+                    phone_number:, order_id: order.id)
   end
 end

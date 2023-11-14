@@ -19,11 +19,11 @@ RSpec.describe OrderShipment, type: :model do
     end
 
     context '商品購入情報を保存できないとき' do
-      #it 'tokenが空では保存できない' do
-        #@order_shipment.token = ''
-        #@order_shipment.valid?
-        #expect(@order_shipment.errors.full_messages).to include("Token can't be blank")
-      #end
+      it 'tokenが空では保存できない' do
+        @order_shipment.token = ''
+        @order_shipment.valid?
+        expect(@order_shipment.errors.full_messages).to include("Token can't be blank")
+      end
 
       it 'postalcodeが空では保存できない' do
         @order_shipment.postalcode = nil
